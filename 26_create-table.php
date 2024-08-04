@@ -6,7 +6,7 @@ $password = "";
 $database = "dbibrahim018";
 
 // Create a connection
-$conn = mysqli_connect($servername, $username, $password);
+$conn = mysqli_connect($servername, $username, $password,$database);
 
 // Die if connection was not successful
 if (!$conn) {
@@ -16,10 +16,10 @@ if (!$conn) {
 }
 
 //select a database
-$db_selected = mysqli_select_db($conn , $database);
-if (!$db_selected){
-    die ("Can't use database : " . mysqli_error($conn));
-}
+// $db_selected = mysqli_select_db($conn , $database);
+// if (!$db_selected){
+//     die ("Can't use database : " . mysqli_error($conn));
+// }
 
 // Create a table in the table
 $sql2 = "CREATE TABLE `dbibrahim018`.`checkout` (`name` VARCHAR(25) NOT NULL , `address` VARCHAR(40) NOT NULL , `email` VARCHAR(30) NOT NULL , `phone number` INT(14) NOT NULL )";
@@ -41,3 +41,5 @@ else{
 }
   
 ?>
+
+
