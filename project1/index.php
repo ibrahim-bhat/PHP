@@ -38,14 +38,10 @@
             </thead>
             <tbody>
                 <?php
+                
                 // Fetch data from database
                 $sql2 = "SELECT * FROM details";
                 $result2 = mysqli_query($conn, $sql2);
-                if($result2){
-                    echo "";
-                } else {
-                    echo "Error: " . $sql2 . "<br>" . mysqli_error($conn);
-                }
 
                 while ($record = mysqli_fetch_assoc($result2)) {
                     echo "<tr>
@@ -53,9 +49,15 @@
                         <td>" . $record['email'] . "</td>
                         <td class='actions'>
                             <button class='edit' data-name='" . $record['name'] . "' data-email='" . $record['email'] . "' data-id='" . $record['sno'] . "'>Edit</button>
-                            <button class='delete'>Delete</button>
+                            <button class='delete' data-id='" . $record['sno'] . "'>Delete</button>
                         </td>
                     </tr>";
+                }
+                if (isset($_GET['delete'])) {
+                    $sno = $_GET['delete'];
+                    $delete = true;
+                    $sql = "DELETE FROM `details` WHERE `sno` = $sno";
+                    $result = mysqli_query($conn, $sql);
                 }
                 ?>
             </tbody>

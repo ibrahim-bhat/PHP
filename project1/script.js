@@ -49,3 +49,19 @@ document.getElementById("saveChanges").addEventListener("click", function () {
   });
   modal.style.display = "none";
 });
+
+
+// Handle delete button click
+document.querySelectorAll('.delete').forEach(button => {
+    button.addEventListener('click', function() {
+        let id = this.getAttribute('data-id');
+        if (confirm("Are you sure you want to delete this record?")) {
+            window.location.href = "edit_delete.php?delete=" + id;
+        }
+    });
+});
+
+// Handle save changes button click
+document.getElementById('saveChanges').addEventListener('click', function() {
+    document.getElementById('modalForm').submit();
+});
