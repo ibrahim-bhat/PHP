@@ -38,6 +38,8 @@
         $getAlert = false;
         if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
             $content = $_POST['content'];
+            $content = str_replace("<" , "&lt" , $content);
+            $content = str_replace(">", "&gt", $content);
             $sql = "INSERT INTO `comments` ( `comment_content`, `thread_id`, `comment_time`) VALUES ( '$content', '$id', current_timestamp());";
             $result = mysqli_query($conn, $sql);
             $getAlert = true;

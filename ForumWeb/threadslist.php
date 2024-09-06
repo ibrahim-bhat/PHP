@@ -38,15 +38,22 @@
             if (($_SERVER["REQUEST_METHOD"] == "POST")) {
                 $question = $_POST['title'];
                 $description = $_POST['content'];
+                // Potential XSS Attack through js
+                $question = str_replace("<", "&lt", $question);
+                $question = str_replace(">", "&gt", $question);
+                
+                $description = str_replace("<", "&lt", $description);
+                $description = str_replace(">", "&gt", $description);
+                
                 $id = $_GET['catid'];
-                $sql = "INSERT INTO `thread` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$question', '$description', '$id', '0', current_timestamp());";
-                $result = mysqli_query($conn, $sql);
-                $showalert = true;
-                if ($showalert) {
-                    echo "<h3 style='color: green;'>Your  thread has been successfully submited.</h3>";
-                }
-            }
 
+                    $sql = "INSERT INTO `thread` (`thread_title`, `thread_desc`, `thread_cat_id`, `thread_user_id`, `timestamp`) VALUES ('$question', '$description', '$id', '0', current_timestamp());";
+                    $result = mysqli_query($conn, $sql);
+                    $showalert = true;
+                    if ($showalert) {
+                        echo "<h3 style='color: green;'>Your  thread has been successfully submited.</h3>";
+                    }
+                } 
             ?>
 
             <!-- if user is logged in then he can start discussion -->
@@ -96,10 +103,14 @@
                 $desc = $row['thread_desc'];
                 $thread_time = $row['timestamp'];
                 $thread_user_id = $row['thread_user_id'];
-                $sql2= "SELECT user_email FROM `user-account` WHERE sno='$thread_user_id'";
+                $sql2 = "SELECT user_email FROM `user-account` WHERE sno='$thread_user_id'";
                 $result2 = mysqli_query($conn, $sql2);
                 $row2 = mysqli_fetch_assoc($result2);
-                $posted_by = $row2['user_email'];
+                if ($row2) {
+                    $posted_by = $row2['user_email'];
+                } else {
+                    $posted_by = 'Anonymous';  // Default value if no user is found
+                }
                 echo ' <div class="media">
                 <img src="./img/userimg.png" alt="User Avatar" class="media-avatar">
                 <div class="media-body">

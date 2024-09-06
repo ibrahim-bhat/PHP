@@ -1,7 +1,18 @@
 // Get the modals
 var loginModal = document.getElementById("loginModal");
 var signupModal = document.getElementById("signupModal");
+var btn= document.querySelector(".close");
+var modal= document.querySelector(".modal");
+var loginbtn = document.querySelector(".btn");
+if (loginbtn) {
+  loginbtn.addEventListener("click", function (event) {
+     event.preventDefault();
+  });
+} else {
+  console.error("Button with class 'btn' not found");
+}
 
+console.log("hellow");
 // Get the buttons that open the modals
 var openLoginModalBtn = document.getElementById("openLoginModal");
 var openSignupModalBtn = document.getElementById("openSignupModal");
@@ -12,13 +23,16 @@ var closeSignupModalBtn = document.getElementById("closeSignupModal");
 
 // Open the login modal
 openLoginModalBtn.onclick = function () {
-  loginModal.style.display = "block";
+  modal.style.display = "block";
+};
+closeLoginModalBtn.onclick = function () {
+  modal.style.display = "none";
 };
 
 // Open the signup modal
-openSignupModalBtn.onclick = function () {
-  signupModal.style.display = "block";
-};
+// openSignupModalBtn.onclick = function () {
+//   signupModal.style.display = "block";
+// };
 
 // Close the login modal
 closeLoginModalBtn.onclick = function () {
@@ -27,7 +41,7 @@ closeLoginModalBtn.onclick = function () {
 
 // Close the signup modal
 closeSignupModalBtn.onclick = function () {
-  signupModal.style.display = "block";
+  signupModal.style.display = "none";
 };
 
 // Close the modal if the user clicks outside of it
@@ -40,13 +54,12 @@ window.onclick = function (event) {
   }
 };
 
-
-    // Show the alert box and then hide it after 3 seconds
-    window.onload = function() {
-        var alertBox = document.getElementById('alertBox');
-        if (alertBox) {
-            setTimeout(function() {
-                alertBox.classList.add('hide');
-            }, 3000); // 3 seconds
-        }
-    };
+// Show the alert box and then hide it after 3 seconds
+window.onload = function () {
+  var alertBox = document.getElementById("alertBox");
+  if (alertBox) {
+    setTimeout(function () {
+      alertBox.classList.add("hide");
+    }, 3000); // 3 seconds
+  }
+};

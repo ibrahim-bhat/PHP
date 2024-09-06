@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<div style='color: red;  font-size: 1rem; margin-top: 10px;'>invalid details !</div>";
             }
             ?>
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn">Logn</button>
 
         </form>
     </div>

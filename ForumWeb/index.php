@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ForumWeb - Home</title>
     <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/app.js" defer></script>
 </head>
 
 <body>
@@ -37,9 +38,9 @@
             echo '        <div class="info-box">
             <img src="path_to_your_image.jpg" alt="Image description">
             <h2><a href="threads.php?catid=' . $id . '"></a>' . $cat . '</h2>
-            <p>'. substr($desc , 0 ,200 )  . '...</p>
+            <p>' . substr($desc, 0, 200)  . '...</p>
             <p> Posted on (' . $created . ')</p>
-            <a href="threadslist.php?catid='. $id . '" class="btn">Read More</a>
+            <a href="threadslist.php?catid=' . $id . '" class="btn">Read More</a>
         </div>';
         }
         ?>
@@ -49,7 +50,7 @@
 
     <?php include 'partials/footer.php'; ?>
 
-    <script src="./js/script.js"></script>
 </body>
+
 
 </html>

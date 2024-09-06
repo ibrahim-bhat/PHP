@@ -1,0 +1,6 @@
+my first problem realted to webiste is the login feature when i insert wrong details it didn.t show error like invalid details and then problem realted to it was 2 time login i login but it did'nt login until i will refresh
+
+and second problem is when insert any problem in box and submit i shows anonymus user insted of user email and also  thread table is 0 while i post something while logged in 
+
+and also i didn't work further in comment by logged user
+
