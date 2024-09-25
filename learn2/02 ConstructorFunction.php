@@ -1,4 +1,5 @@
 <?php
+// In PHP, the constructor function is a special method that is automatically called when a new object is created from a class. The constructor function is called __construct() and it is used to initialize an object's properties
 class person
 {
     public $name, $age;
