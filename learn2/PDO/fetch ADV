@@ -1,0 +1,83 @@
+...............1. PDO::FETCH_COLUMN
+
+Description: Fetches a single column from the result set as an array.
+Usage:
+PHP
+$stmt = $pdo->query("SELECT name FROM users");
+$names = $stmt->fetchAll(PDO::FETCH_COLUMN);
+Use code with caution.
+
+This will return an array containing only the "name" column values from the "users" table.
+
+
+................2. PDO::FETCH_GROUP
+
+Description: Fetches the result set grouped by a specified column, returning an associative array where the keys are the values of the grouping column and the values are arrays of rows.
+
+Usage:
+
+PHP
+$stmt = $pdo->query("SELECT country, city FROM locations");
+$locationsByCountry = $stmt->fetchAll(PDO::FETCH_GROUP);
+Use code with caution.
+
+This will group the results by "country" and return an associative array like:
+
+[
+    "USA" => [
+        ["city" => "New York"],
+        ["city" => "Los Angeles"]
+    ],
+    "Canada" => [
+        ["city" => "Toronto"],
+        ["city" => "Vancouver"]
+    ]
+]
+
+
+.......................3. PDO::FETCH_UNIQUE
+
+Description: Fetches the result set, ensuring that each row is unique based on a specified column or set of columns.
+Usage:
+PHP
+$stmt = $pdo->query("SELECT id, name FROM users");
+$users = $stmt->fetchAll(PDO::FETCH_UNIQUE, PDO::FETCH_COLUMN);
+Use code with caution.
+
+This will return an associative array where the keys are the "id" values and the values are the corresponding "name" values, ensuring that there are no duplicate "id" values.
+
+
+........................4. PDO::FETCH_KEY_PAIR
+
+Description: Fetches the result set as an associative array where the first column is used as the key and the second column as the value.
+
+Usage:
+
+PHP
+$stmt = $pdo->query("SELECT id, name FROM users");
+$users = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+Use code with caution.
+
+This will return an associative array like:
+
+[
+    1 => "John Doe",
+    2 => "Jane Smith"
+]
+
+
+.........................5. PDO::FETCH_CLASS
+
+Description: Fetches the result set as an array of objects of a specified class.
+Usage:
+PHP
+class User {
+    public $id;
+    public $name;
+}
+
+$stmt = $pdo->query("SELECT id, name FROM users");
+$users = $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+Use code with caution.
+
+This will create User objects for each row and populate their properties with the corresponding column values.

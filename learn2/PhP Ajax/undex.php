@@ -35,6 +35,11 @@
 
         </tbody>
     </table>
+
+    <form action="">
+        <input type="text" id="name">
+        <input type="submit" name="sumbit-btn" id="btn ">
+    </form>
     <button id="load" value="load data">Refresh</button>
 </body>
 
